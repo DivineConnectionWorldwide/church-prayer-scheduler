@@ -76,3 +76,56 @@ input:focus-visible {
     min-height: 44px;
   }
 }
+/* 🌍 GLOBAL MOBILE TEXT READABILITY */
+html, body {
+  font-size: 16px;
+  line-height: 1.6;
+  -webkit-text-size-adjust: 100%;
+}
+
+p, span, li {
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  font-size: 16px;
+}
+
+/* Headings responsive */
+h1 {
+  font-size: clamp(24px, 6vw, 40px);
+  line-height: 1.2;
+}
+
+h2 {
+  font-size: clamp(20px, 5vw, 32px);
+  line-height: 1.3;
+}
+
+h3 {
+  font-size: clamp(18px, 4vw, 28px);
+}
+
+/* Prevent horizontal scroll issues */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  overflow-x: hidden;
+}
+
+/* Mobile spacing */
+.container {
+  padding: 12px;
+  max-width: 100%;
+}
+
+/* Buttons readable on mobile */
+button {
+  font-size: 16px;
+  padding: 10px 14px;
+}
+
+/* Inputs readable */
+input, textarea, select {
+  font-size: 16px;
+}
