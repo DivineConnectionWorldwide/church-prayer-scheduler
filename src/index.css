@@ -1,11 +1,11 @@
 @import "tailwindcss";
 
-/* Global box sizing */
+/* ── Global Box Sizing ───────────────────────── */
 * {
   box-sizing: border-box;
 }
 
-/* Global HTML */
+/* ── Root Typography Scale (VERY IMPORTANT) ───── */
 html {
   font-size: 16px;
   -webkit-text-size-adjust: 100%;
@@ -14,81 +14,120 @@ html {
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* Body */
+/* ── Body (OPTIMIZED READABILITY) ─────────────── */
 body {
   margin: 0;
   padding: 0;
   overflow-x: hidden;
   overscroll-behavior-y: contain;
-  line-height: 1.7;
+
+  /* BIG IMPROVEMENT: readability */
+  font-size: 1.05rem;        /* slightly larger than default */
+  line-height: 1.75;        /* easier reading */
   font-weight: 400;
+
+  color: #111;
 }
 
-/* iOS safe area */
-@supports (padding: env(safe-area-inset-top)) {
-  .safe-top { padding-top: env(safe-area-inset-top); }
-  .safe-bottom { padding-bottom: env(safe-area-inset-bottom); }
-}
-
-/* Touch scrolling */
-main {
-  -webkit-overflow-scrolling: touch;
-}
-
-/* Headings */
+/* ── Responsive Headings (FLUID TYPOGRAPHY) ───── */
 h1 {
-  font-size: clamp(24px, 6vw, 40px);
-  line-height: 1.2;
+  font-size: clamp(28px, 6vw, 44px);
+  line-height: 1.15;
+  font-weight: 700;
 }
 
 h2 {
-  font-size: clamp(20px, 5vw, 32px);
-  line-height: 1.3;
+  font-size: clamp(22px, 5vw, 34px);
+  line-height: 1.25;
+  font-weight: 700;
 }
 
 h3 {
   font-size: clamp(18px, 4vw, 28px);
+  line-height: 1.3;
+  font-weight: 600;
 }
 
-/* Text readability */
+/* ── Paragraph + List Readability ─────────────── */
 p, li {
-  max-width: 70ch;
+  font-size: 1.05rem;
+  line-height: 1.8;
+  max-width: 75ch; /* optimal reading width */
   overflow-wrap: break-word;
 }
 
-/* Mobile form readability */
+/* ── Better spacing for content blocks ───────── */
+p {
+  margin-bottom: 1rem;
+}
+
+li {
+  margin-bottom: 0.5rem;
+}
+
+/* ── Forms (mobile usability fix) ─────────────── */
 @media (max-width: 768px) {
   button,
   input,
   textarea,
   select {
-    font-size: 16px;
+    font-size: 16px; /* prevents iOS zoom */
   }
 }
 
-/* Focus accessibility */
-button:focus-visible,
-input:focus-visible {
-  outline: 2px solid #7c3aed;
-  outline-offset: 2px;
+/* ── Safe area (iPhone notch support) ────────── */
+@supports (padding: env(safe-area-inset-top)) {
+  .safe-top {
+    padding-top: env(safe-area-inset-top);
+  }
+  .safe-bottom {
+    padding-bottom: env(safe-area-inset-bottom);
+  }
 }
 
-/* Hide scrollbar */
+/* ── Touch scrolling ──────────────────────────── */
+main {
+  -webkit-overflow-scrolling: touch;
+}
+
+/* ── Focus Accessibility (important for apps) ─── */
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible {
+  outline: 3px solid #7c3aed;
+  outline-offset: 3px;
+}
+
+/* ── Scrollbar Hide Utility ───────────────────── */
 .hide-scrollbar {
   -ms-overflow-style: none;
   scrollbar-width: none;
 }
+
 .hide-scrollbar::-webkit-scrollbar {
   display: none;
 }
 
-/* Hover lift */
+/* ── Hover animation (desktop only) ───────────── */
 @media (hover: hover) {
   .hover-lift {
     transition: transform 0.2s ease, box-shadow 0.2s ease;
   }
+
   .hover-lift:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+    transform: translateY(-3px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
+  }
+}
+
+/* ── EXTRA: Improve readability on large screens ─ */
+@media (min-width: 1440px) {
+  body {
+    font-size: 1.15rem;
+  }
+
+  p, li {
+    font-size: 1.15rem;
+    line-height: 1.9;
   }
 }
